@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <strong>A bilingual portfolio at the intersection of product, process, and people.</strong>
+  <strong>A bilingual portfolio at the intersection of product, process, and operations.</strong>
 </p>
 
 <p align="center">
@@ -15,13 +15,15 @@
 
 ## 01 / The portfolio
 
-I’m **MohammadReza Sama**, a Product Manager at **TalaLand**, with a background in customer experience and operations at **SnappMarket**.
+I’m **MohammadReza Sama**, a Product Manager working concurrently with **MVM (Modiran Khodro)** and **TopTech**, with a background in customer experience and operations at **SnappMarket**.
 
 This portfolio brings together the customer journeys, operating models, and product decisions I’ve helped shape across **BNPL, CRM, marketplaces, analytics, and product delivery**.
 
 **[Explore the live experience →](https://mxowl.github.io/)**
 
 ### Selected work
+
+- **Product Intelligence & Automation** — monitoring, structured reporting, workflow design, and product follow-up.
 
 - **BNPL & installment gold purchase** — customer journeys from eligibility to repayment.
 - **CRM action plan & knowledge tree** — decision paths, ownership, and follow-through.
@@ -76,7 +78,7 @@ Then open `http://localhost:8000`. Edit shared page content in `index.html`, pro
 
 <div dir="rtl">
 
-### محمدرضا سماواتیان | سما — مدیر محصول
+### محمدرضا سمواتیان | سما — مدیر محصول
 
 این پورتفولیوی دوزبانه، بخشی از مسیر حرفه‌ای و تجربه‌های من در محصول، فرآیند و عملیات را روایت می‌کند؛ از خرید اعتباری و CRM تا مارکت‌پلیس، تحلیل داده و تحویل محصول.
 
@@ -90,3 +92,4 @@ Then open `http://localhost:8000`. Edit shared page content in `index.html`, pro
 ---
 
 <p align="center"><sub>MohammadReza Sama · <em>Product, with purpose.</em></sub></p>
+
