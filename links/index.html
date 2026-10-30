@@ -284,6 +284,98 @@
       .category-name{font-size:14px}
     }
     @media(prefers-reduced-motion:reduce){.open-section{animation:none}}
+
+    /* Distinct category identities — illustrated hero glyph + recognizable platform glyphs */
+    .category-card{
+      min-height:244px;
+      padding:21px 22px 19px;
+      display:flex;
+      justify-content:flex-start;
+      gap:0;
+      isolation:isolate;
+      overflow:hidden;
+      background:linear-gradient(145deg,rgba(211,180,120,.033),transparent 68%),var(--surface);
+    }
+    .category-card::before{
+      content:"";position:absolute;z-index:-1;
+      top:-66px;inset-inline-end:-54px;width:165px;height:165px;border-radius:50%;
+      background:radial-gradient(circle,rgba(211,180,120,.12),rgba(211,180,120,.025) 43%,transparent 70%);
+      pointer-events:none;
+    }
+    .category-card[aria-expanded="true"]{
+      box-shadow:inset 0 0 0 1px rgba(211,180,120,.12);
+    }
+    .category-top{flex:none;align-items:center}
+    .category-identity{display:flex;align-items:center;gap:13px;margin-top:17px;min-width:0}
+    .category-feature-icon{
+      display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;
+      border:1px solid var(--line-strong);background:rgba(211,180,120,.07);
+      color:var(--gold);position:relative;
+      transition:transform .28s,background .28s;
+    }
+    .category-feature-icon::after{
+      content:"";position:absolute;inset:4px;border:1px solid rgba(211,180,120,.075);
+      pointer-events:none;
+    }
+    .category-feature-icon svg{width:25px;height:25px;display:block}
+    .category-card:hover .category-feature-icon,
+    .category-card[aria-expanded="true"] .category-feature-icon{
+      transform:translateY(-2px);background:rgba(211,180,120,.13);
+    }
+    .category-name{margin:0;font-size:19px;line-height:1.36;min-width:0}
+    .category-desc{
+      display:block;font-size:10.5px;line-height:1.5;margin:11px 0 0;min-height:30px;
+    }
+    .category-bottom{
+      border-top:1px solid var(--line);padding-top:13px;margin-top:auto;gap:9px;align-items:center;
+    }
+    .category-preview-strip{display:flex;align-items:center;gap:5px;flex-wrap:nowrap;min-width:0}
+    .category-preview-logo{
+      display:grid;place-items:center;flex:0 0 26px;width:26px;height:26px;
+      color:var(--gold);background:rgba(211,180,120,.055);
+      border:1px solid rgba(211,180,120,.22);
+      transition:background .2s,transform .2s,border-color .2s;
+    }
+    .category-preview-logo svg{width:15px;height:15px;display:block}
+    .category-card:hover .category-preview-logo{
+      background:rgba(211,180,120,.10);border-color:rgba(211,180,120,.36);
+    }
+    .category-count{font:700 8px "DM Sans",sans-serif;letter-spacing:.08em;text-align:end;white-space:nowrap}
+    .category-preview-names{
+      display:block;margin-top:9px;color:var(--subtle);font:500 9px/1.45 "DM Sans",sans-serif;
+      letter-spacing:.015em;min-height:13px;
+    }
+    html[dir="rtl"] .category-preview-names{font-family:"Vazirmatn",Tahoma,sans-serif;letter-spacing:0}
+    @media(max-width:820px){
+      .category-card{min-height:239px;padding:19px 18px}
+      .category-identity{gap:10px;margin-top:14px}
+      .category-feature-icon{flex-basis:43px;width:43px;height:43px}
+      .category-feature-icon svg{width:23px;height:23px}
+      .category-name{font-size:18px}
+    }
+    @media(max-width:600px){
+      .category-card{min-height:254px;padding:14px 12px 13px}
+      .category-identity{display:block;margin-top:13px}
+      .category-feature-icon{width:37px;height:37px;flex-basis:37px}
+      .category-feature-icon svg{width:20px;height:20px}
+      .category-name{display:block;margin-top:10px;font-size:16px;line-height:1.35}
+      .category-desc{font-size:9px;line-height:1.45;margin-top:7px;min-height:30px}
+      .category-bottom{margin-top:auto;padding-top:11px;gap:4px;align-items:start;flex-direction:column}
+      .category-preview-strip{gap:4px;max-width:100%}
+      .category-preview-logo{flex-basis:21px;width:21px;height:21px}
+      .category-preview-logo svg{width:13px;height:13px}
+      .category-count{font-size:7px;white-space:nowrap}
+      .category-preview-names{font-size:8px;line-height:1.45;margin-top:6px;min-height:23px}
+    }
+    @media(max-width:355px){
+      .category-card{padding:12px 9px;min-height:256px}
+      .category-name{font-size:14px}
+      .category-preview-logo{flex-basis:19px;width:19px;height:19px}
+      .category-preview-logo svg{width:12px;height:12px}
+      .category-preview-strip{gap:3px}
+      .category-preview-names{font-size:7.5px}
+    }
+
   </style>
 </head>
 <body>
@@ -461,10 +553,31 @@
 
 
   const categoryDetails = [
-    {slug:"essentials", en:"Quick essentials", fa:"ابزارهای کاربردی", descEn:"Contact card, résumé & meetings", descFa:"کارت مخاطب، رزومه و جلسه"},
-    {slug:"work", en:"Work & projects", fa:"کارها و پروژه‌ها", descEn:"Portfolio & GitHub", descFa:"پورتفولیو و گیت‌هاب"},
-    {slug:"social", en:"Social channels", fa:"شبکه‌های اجتماعی", descEn:"LinkedIn, Telegram & more", descFa:"لینکدین، تلگرام و دیگر شبکه‌ها"},
-    {slug:"contact", en:"Get in touch", fa:"راه‌های تماس", descEn:"Emails, phones & WhatsApp", descFa:"ایمیل، شماره‌ها و واتساپ"}
+    {
+      slug:"essentials", en:"Quick essentials", fa:"ابزارهای کاربردی",
+      descEn:"Save contact · Résumé · Meeting", descFa:"مخاطب · رزومه · جلسه",
+      heroIcon:"contact", previewIcons:["contact","resume","calendar"],
+      previewEn:"Contact · CV · Meeting", previewFa:"مخاطب · رزومه · جلسه"
+    },
+    {
+      slug:"work", en:"Work & projects", fa:"کارها و پروژه‌ها",
+      descEn:"Discover my work and code", descFa:"پروژه‌ها و تجربه‌های من",
+      heroIcon:"portfolio", previewIcons:["portfolio","github"],
+      previewEn:"Portfolio · GitHub", previewFa:"پورتفولیو · گیت‌هاب"
+    },
+    {
+      slug:"social", en:"Social channels", fa:"شبکه‌های اجتماعی",
+      descEn:"Follow & connect across platforms", descFa:"ارتباط در شبکه‌های اجتماعی",
+      heroIcon:"linkedin", previewIcons:["linkedin","telegram","instagram","youtube","x"],
+      previewEn:"LinkedIn · Telegram · Instagram · YouTube · X",
+      previewFa:"لینکدین · تلگرام · اینستاگرام · یوتیوب · X"
+    },
+    {
+      slug:"contact", en:"Get in touch", fa:"راه‌های تماس",
+      descEn:"A direct line to me", descFa:"ارتباط مستقیم با من",
+      heroIcon:"phone", previewIcons:["email","phone","whatsapp"],
+      previewEn:"Email · Phone · WhatsApp", previewFa:"ایمیل · تلفن · واتساپ"
+    }
   ];
   const initialSlug = window.location.hash.replace(/^#/, "");
   let activeCategory = categoryDetails.findIndex(function (d) { return d.slug === initialSlug; });
@@ -595,19 +708,42 @@
       arrow.setAttribute("aria-hidden", "true");
       arrow.textContent = "↗";
       top.append(number, arrow);
+
+      const identity = document.createElement("span");
+      identity.className = "category-identity";
+      const feature = document.createElement("span");
+      feature.className = "category-feature-icon";
+      feature.setAttribute("aria-hidden", "true");
+      feature.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + icons[details.heroIcon] + '</svg>';
       const name = document.createElement("span");
       name.className = "category-name";
       name.textContent = language === "fa" ? details.fa : details.en;
-      const bottom = document.createElement("span");
-      bottom.className = "category-bottom";
+      identity.append(feature, name);
+
       const desc = document.createElement("span");
       desc.className = "category-desc";
       desc.textContent = language === "fa" ? details.descFa : details.descEn;
+
+      const bottom = document.createElement("span");
+      bottom.className = "category-bottom";
+      const strip = document.createElement("span");
+      strip.className = "category-preview-strip";
+      strip.setAttribute("aria-hidden", "true");
+      details.previewIcons.forEach(function (iconName) {
+        const badge = document.createElement("span");
+        badge.className = "category-preview-logo";
+        badge.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">' + icons[iconName] + '</svg>';
+        strip.append(badge);
+      });
       const count = document.createElement("span");
       count.className = "category-count";
-      count.textContent = ("0" + group.links.length).slice(-2);
-      bottom.append(desc, count);
-      card.append(top, name, bottom);
+      count.textContent = ("0" + group.links.length).slice(-2) + (language === "fa" ? " لینک" : " LINKS");
+      bottom.append(strip, count);
+
+      const services = document.createElement("span");
+      services.className = "category-preview-names";
+      services.textContent = language === "fa" ? details.previewFa : details.previewEn;
+      card.append(top, identity, desc, bottom, services);
       card.addEventListener("click", function () {
         activeCategory = activeCategory === index ? null : index;
         const hash = activeCategory === null ? "" : "#" + categoryDetails[activeCategory].slug;
