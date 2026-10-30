@@ -376,6 +376,34 @@
       .category-preview-names{font-size:7.5px}
     }
 
+
+    /* Highlighted portfolio CTA in the hero-to-directory transition */
+    .portfolio-bridge{display:flex;justify-content:center;align-items:center;padding:27px 0 3px}
+    .portfolio-bridge-action{
+      display:inline-flex;align-items:center;justify-content:center;gap:16px;
+      min-height:52px;padding:14px 28px;border:1px solid var(--gold);
+      background:var(--gold);color:#101b28;text-decoration:none;
+      font:700 12px/1.5 "Manrope",sans-serif;letter-spacing:.01em;
+      box-shadow:0 0 0 1px rgba(211,180,120,.1);
+      transition:transform .2s,box-shadow .2s,background .2s;
+      animation:portfolioGlow 3.8s ease-in-out infinite;
+    }
+    .portfolio-bridge-action:hover{
+      transform:translateY(-2px);background:#e7c990;
+      box-shadow:0 8px 27px rgba(211,180,120,.19);
+    }
+    .portfolio-bridge-action:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
+    .portfolio-bridge-action svg{width:17px;height:17px;flex:none;stroke:currentColor}
+    @keyframes portfolioGlow{
+      0%,100%{box-shadow:0 0 0 0 rgba(211,180,120,.08)}
+      50%{box-shadow:0 0 0 7px rgba(211,180,120,.12)}
+    }
+    html[dir="rtl"] .portfolio-bridge-action{font-family:"Vazirmatn",Tahoma,sans-serif}
+    @media(max-width:600px){
+      .portfolio-bridge{padding:20px 0 0}
+      .portfolio-bridge-action{min-height:46px;padding:12px 19px;font-size:11px;gap:12px}
+    }
+    @media(prefers-reduced-motion:reduce){.portfolio-bridge-action{animation:none}}
   </style>
 </head>
 <body>
@@ -417,6 +445,13 @@
           <figcaption class="hero-caption"><span>MOHAMMADREZA SAMA</span><span>01 / MRS</span></figcaption>
         </figure>
       </section>
+
+      <div class="portfolio-bridge">
+        <a class="portfolio-bridge-action" href="../portfolio/">
+          <span data-en="Explore my full portfolio" data-fa="مشاهده پورتفولیوی کامل">Explore my full portfolio</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg>
+        </a>
+      </div>
 
       <section class="directory" aria-labelledby="directory-title">
         <div class="directory-top">
