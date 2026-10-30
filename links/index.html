@@ -97,6 +97,31 @@
     html[dir="rtl"] .signature,html[dir="rtl"] .eyebrow{direction:ltr}
     html[dir="rtl"] .link-subtitle{font-family:"Vazirmatn",Tahoma,sans-serif}
     html[dir="rtl"] .mark img{object-position:right center}
+
+    /* Quick actions: native accessible dialogs, matching the original visual system */
+    .modal{border:1px solid var(--line-strong);border-radius:18px;background:var(--surface);color:var(--ink);padding:0;width:min(94vw,440px);box-shadow:var(--shadow);max-height:min(92vh,760px);overflow:auto}
+    .modal::backdrop{background:rgba(4,10,16,.73);backdrop-filter:blur(6px)}
+    .modal-inner{padding:26px}
+    .modal-head{display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:10px}
+    .modal h2{font:600 22px/1.2 "Manrope",sans-serif;letter-spacing:-.035em;margin:0}
+    .modal-sub{color:var(--muted);font-size:12px;line-height:1.7;margin:8px 0 20px}
+    .modal-close{width:31px;height:31px;border:1px solid var(--line);background:var(--raised);color:var(--ink);font-size:20px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+    .download-option{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 17px;border:1px solid var(--line);background:var(--raised);border-radius:10px;color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;margin:10px 0}
+    .download-option:hover{border-color:var(--line-strong)}
+    .download-option span{color:var(--gold);font-size:20px}
+    .request-form{display:grid;gap:14px}
+    .form-field{display:grid;gap:6px}
+    .form-field label{font-size:11px;color:var(--muted);font-weight:600}
+    .form-field input,.form-field textarea{font:inherit;font-size:13px;color:var(--ink);background:var(--raised);border:1px solid var(--line);border-radius:9px;padding:12px;outline:none;width:100%}
+    .form-field input:focus,.form-field textarea:focus{border-color:var(--line-strong)}
+    .form-field textarea{resize:vertical;min-height:80px}
+    .form-field input::placeholder,.form-field textarea::placeholder{color:var(--subtle);opacity:.75}
+    .request-submit{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;background:var(--gold);color:#101b28;border:0;border-radius:9px;font:700 12px "Manrope",sans-serif;cursor:pointer}
+    .request-submit:hover{background:var(--gold-bright)}
+    .modal-note{color:var(--subtle);font-size:10px;line-height:1.7;margin:12px 0 0}
+    html[dir="rtl"] .modal h2,html[dir="rtl"] .request-submit{font-family:"Vazirmatn",Tahoma,sans-serif}
+    html[dir="rtl"] .form-field input,html[dir="rtl"] .form-field textarea{font-family:"Vazirmatn",Tahoma,sans-serif}
+
     @media (max-width:540px){
       .world{padding:22px 15px 30px}
       .topline{margin-bottom:20px}
@@ -152,6 +177,49 @@
     <footer><span dir="ltr">© 2026 MRS</span><span data-en="Thoughtfully connected." data-fa="ارتباطی با فکر و هدف.">Thoughtfully connected.</span></footer>
   </div>
 </div>
+
+<dialog class="modal" id="resume-dialog" aria-labelledby="resume-title">
+  <div class="modal-inner">
+    <div class="modal-head">
+      <h2 id="resume-title" data-en="Choose your résumé" data-fa="انتخاب رزومه">Choose your résumé</h2>
+      <form method="dialog"><button class="modal-close" aria-label="Close" type="submit">×</button></form>
+    </div>
+    <p class="modal-sub" data-en="Select the language you prefer. Both files are PDFs from my portfolio." data-fa="زبان دلخواه را انتخاب کن. هر دو فایل PDF از پورتفولیوی من هستند.">Select the language you prefer. Both files are PDFs from my portfolio.</p>
+    <a class="download-option" href="../resume-en.pdf" download="MohammadReza-Sama-Resume-EN.pdf"><span>English résumé · PDF</span><span aria-hidden="true">↓</span></a>
+    <a class="download-option" href="../resume-fa.pdf" download="MohammadReza-Sama-Resume-FA.pdf"><span>رزومه فارسی · PDF</span><span aria-hidden="true">↓</span></a>
+  </div>
+</dialog>
+
+<dialog class="modal" id="meeting-dialog" aria-labelledby="meeting-title">
+  <div class="modal-inner">
+    <div class="modal-head">
+      <h2 id="meeting-title" data-en="Request a meeting" data-fa="درخواست جلسه">Request a meeting</h2>
+      <form method="dialog"><button class="modal-close" aria-label="Close" type="submit">×</button></form>
+    </div>
+    <p class="modal-sub" data-en="Share a few details and I'll receive your request by email. This is not an instant booking." data-fa="چند مورد کوتاه را وارد کن تا درخواست از طریق ایمیل ارسال شود. این فرم رزرو قطعی نیست.">Share a few details and I'll receive your request by email. This is not an instant booking.</p>
+    <form id="meeting-form" class="request-form">
+      <div class="form-field">
+        <label for="meeting-name" data-en="Your name *" data-fa="نام شما *">Your name *</label>
+        <input id="meeting-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+      </div>
+      <div class="form-field">
+        <label for="meeting-email" data-en="Email address *" data-fa="آدرس ایمیل *">Email address *</label>
+        <input id="meeting-email" name="email" type="email" autocomplete="email" maxlength="180" required>
+      </div>
+      <div class="form-field">
+        <label for="meeting-time" data-en="Preferred time & time zone (optional)" data-fa="زمان و منطقه زمانی پیشنهادی (اختیاری)">Preferred time & time zone (optional)</label>
+        <input id="meeting-time" name="time" type="text" maxlength="150" placeholder="e.g. Tuesday 15:00 — Tehran time">
+      </div>
+      <div class="form-field">
+        <label for="meeting-purpose" data-en="What would you like to discuss? (optional)" data-fa="موضوع گفتگو چیست؟ (اختیاری)">What would you like to discuss? (optional)</label>
+        <textarea id="meeting-purpose" name="purpose" maxlength="1200"></textarea>
+      </div>
+      <button class="request-submit" type="submit" data-en="Open email draft ↗" data-fa="باز کردن پیش‌نویس ایمیل ↗">Open email draft ↗</button>
+    </form>
+    <p class="modal-note" data-en="No information is saved on this website. Please send the email in your mail app to complete the request." data-fa="هیچ داده‌ای در این سایت ذخیره نمی‌شود. برای ثبت درخواست، ایمیل آماده‌شده را در برنامه ایمیلت ارسال کن.">No information is saved on this website. Please send the email in your mail app to complete the request.</p>
+  </div>
+</dialog>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (function () {
@@ -177,7 +245,10 @@
 
   // Inline vector icons: no external icon libraries or tracking scripts.
   const icons = {
-    portfolio: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/>',
+    contact: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18M12 8h4M12 12h4M12 16h3"/>',
+    resume: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4M15 18v3m0 0-2-2m2 2 2-2"/>',
+    calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 5h8"/>',
+        portfolio: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/>',
     linkedin: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-7M12 13c0-2 5-4 5 1v3"/>',
     telegram: '<path d="m21 3-4 18-5.5-5.2L8 18l1-6 12-9Z"/><path d="m9 12 12-9"/>',
     instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
@@ -190,11 +261,16 @@
   };
 
   const groups = [
-    { number:"01", en:"Explore", fa:"آشنایی بیشتر", links:[
+    { number:"01", en:"Your essentials", fa:"دسترسی‌های کاربردی", links:[
+      {key:"saveContact", icon:"contact", action:"contact", en:"Save My Contact", fa:"ذخیره مخاطب", subEn:"Add my details to your phone", subFa:"ذخیره اطلاعات تماس در گوشی", primary:true},
+      {key:"getResume", icon:"resume", action:"resume", en:"Download Resume", fa:"دانلود رزومه", subEn:"English & Persian · PDF", subFa:"فارسی و انگلیسی · PDF"},
+      {key:"requestMeeting", icon:"calendar", action:"meeting", en:"Request a Meeting", fa:"درخواست جلسه", subEn:"Send a meeting request by email", subFa:"ارسال درخواست جلسه از طریق ایمیل"}
+    ]},
+    { number:"02", en:"Explore", fa:"آشنایی بیشتر", links:[
       {key:"portfolio", en:"Portfolio & Projects", fa:"پورتفولیو و پروژه‌ها", subEn:"mxowl.github.io", subFa:"mxowl.github.io", primary:true},
       {key:"github", en:"GitHub", fa:"گیت‌هاب", subEn:"github.com/mxowl", subFa:"github.com/mxowl"}
     ]},
-    { number:"02", en:"Follow", fa:"شبکه‌های اجتماعی", links:[
+    { number:"03", en:"Follow", fa:"شبکه‌های اجتماعی", links:[
       {key:"linkedin", en:"LinkedIn", fa:"لینکدین", subEn:"Professional profile", subFa:"پروفایل حرفه‌ای"},
       {key:"telegram", en:"Telegram · @mxowl", fa:"تلگرام · @mxowl", subEn:"t.me/mxowl", subFa:"t.me/mxowl"},
       {key:"telegram2", icon:"telegram", en:"Telegram · @MohammadRezaSama", fa:"تلگرام · @MohammadRezaSama", subEn:"t.me/MohammadRezaSama", subFa:"t.me/MohammadRezaSama"},
@@ -202,7 +278,7 @@
       {key:"youtube", en:"YouTube · @mxowl1", fa:"یوتیوب · @mxowl1", subEn:"youtube.com/@mxowl1", subFa:"youtube.com/@mxowl1"},
       {key:"x", en:"X / Twitter · @mxowl1", fa:"ایکس (توییتر) · @mxowl1", subEn:"x.com/mxowl1", subFa:"x.com/mxowl1"}
     ]},
-    { number:"03", en:"Reach out", fa:"راه‌های تماس", links:[
+    { number:"04", en:"Reach out", fa:"راه‌های تماس", links:[
       {key:"email", en:"Email · Primary", fa:"ایمیل اصلی", subEn:"mrezasmvt@gmail.com", subFa:"mrezasmvt@gmail.com"},
       {key:"email2", icon:"email", en:"Email · Alternative", fa:"ایمیل دوم", subEn:"mrezasama8@gmail.com", subFa:"mrezasama8@gmail.com"},
       {key:"phone", en:"Phone · 01", fa:"تلفن ۱", subEn:"+98 910 991 2311", subFa:"+98 910 991 2311"},
@@ -218,6 +294,9 @@
   const themeButton = document.getElementById("theme");
   const themeIcon = document.getElementById("theme-icon");
   const toast = document.getElementById("toast");
+  const resumeDialog = document.getElementById("resume-dialog");
+  const meetingDialog = document.getElementById("meeting-dialog");
+  const meetingForm = document.getElementById("meeting-form");
   let toastHide;
 
   function readPreference(key, fallback) {
@@ -246,7 +325,7 @@
 
   function makeLink(item) {
     const card = document.createElement("button");
-    const url = safeDestination(destinations[item.key]);
+    const url = item.action ? "" : safeDestination(destinations[item.key]);
     card.type = "button";
     card.className = "link-card" + (item.primary ? " primary" : "");
     card.setAttribute("aria-label", item[language === "fa" ? "fa" : "en"]);
@@ -256,8 +335,29 @@
 
     card.querySelector(".link-title").textContent = language === "fa" ? item.fa : item.en;
     card.querySelector(".link-subtitle").textContent = language === "fa" ? item.subFa : item.subEn;
-    card.querySelector(".pending").textContent = item.requiresVerification ? (language === "fa" ? "بررسی" : "CHECK") : (url ? (language === "fa" ? "باز کردن" : "OPEN") : (language === "fa" ? "به‌زودی" : "SOON"));
+    card.querySelector(".pending").textContent = item.action
+      ? (language === "fa" ? "انتخاب" : "OPEN")
+      : item.requiresVerification
+      ? (language === "fa" ? "بررسی" : "CHECK")
+      : (url ? (language === "fa" ? "باز کردن" : "OPEN") : (language === "fa" ? "به‌زودی" : "SOON"));
     card.addEventListener("click", function () {
+      if (item.action === "contact") {
+        const download = document.createElement("a");
+        download.href = "./MohammadReza-Sama.vcf";
+        download.download = "MohammadReza-Sama.vcf";
+        document.body.append(download);
+        download.click();
+        download.remove();
+        return;
+      }
+      if (item.action === "resume") {
+        resumeDialog.showModal();
+        return;
+      }
+      if (item.action === "meeting") {
+        meetingDialog.showModal();
+        return;
+      }
       if (!url) {
         showToast(language === "fa" ? "این مسیر هنوز فعال نشده؛ به‌زودی اضافه می‌شود." : "This link isn't connected yet. Coming soon.");
         return;
@@ -305,6 +405,32 @@
       groupsNode.append(section);
     });
   }
+
+  meetingForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (!meetingForm.reportValidity()) return;
+    const name = document.getElementById("meeting-name").value.trim();
+    const fromEmail = document.getElementById("meeting-email").value.trim();
+    const preferred = document.getElementById("meeting-time").value.trim();
+    const purpose = document.getElementById("meeting-purpose").value.trim();
+    const subject = "Meeting request — " + name;
+    const body = [
+      "Hello MohammadReza,",
+      "",
+      "I'd like to request a meeting.",
+      "",
+      "Name: " + name,
+      "Email: " + fromEmail,
+      "Preferred time / time zone: " + (preferred || "To be coordinated"),
+      "Topic: " + (purpose || "To be discussed"),
+      "",
+      "Thank you."
+    ].join("\n");
+    const emailDraft = "mailto:mrezasmvt@gmail.com?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(body);
+    meetingDialog.close();
+    window.location.href = emailDraft;
+  });
 
   languageButton.addEventListener("click", function () {
     language = language === "en" ? "fa" : "en";
