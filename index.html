@@ -133,6 +133,13 @@ html[dir="rtl"] .choice-title{text-align:start}
 /* Refined shared identity */
 .brand img{width:72px;height:40px;opacity:.94}.brand{gap:12px}.brand-desc{font-size:8px;letter-spacing:.13em}.brand-line{height:20px}
 @media(max-width:600px){.brand img{width:59px;height:34px}}
+
+/* Main-page identity: fewer labels, a clearer personal introduction. */
+.person-name{text-align:center;font:700 clamp(22px,2.3vw,30px)/1.4 "Manrope","DM Sans",sans-serif;letter-spacing:-.035em;margin:0 0 25px;text-wrap:balance;overflow-wrap:normal}
+.person-name strong{font-weight:750}.name-alias{display:inline-block;font-size:.56em;font-weight:400;letter-spacing:.01em;color:var(--muted);opacity:.65;filter:blur(.2px);vertical-align:baseline;white-space:nowrap}
+.role{text-align:center;font-size:22px;font-weight:800;letter-spacing:-.025em;margin:30px 0 10px}.process{text-align:center}
+.site-footer{padding:0;height:1px;min-height:0;display:block;margin-top:46px}
+@media(max-width:600px){.person-name{font-size:20px;line-height:1.45;margin-bottom:18px}.role{font-size:18px;margin-top:22px}.name-alias{font-size:.61em}.site-footer{margin-top:32px}}
 </style>
 </head>
 <body>
@@ -140,8 +147,6 @@ html[dir="rtl"] .choice-title{text-align:start}
   <header class="head">
     <a href="./" class="brand" aria-label="MRS home">
       <img src="monogram.svg?v=20261101" alt="MRS logo" width="101" height="51">
-      <span class="brand-line"></span>
-      <span class="brand-desc">PRODUCT / PROCESS<br>OPERATIONS</span>
     </a>
     <nav class="nav-right" aria-label="Site navigation">
       
@@ -154,16 +159,13 @@ html[dir="rtl"] .choice-title{text-align:start}
   <main>
     <section class="hero" aria-labelledby="headline">
       <div class="hero-copy">
-        <p class="eyebrow" data-en="PRODUCT. PROCESS. CONNECTION." data-fa="محصول. فرآیند. ارتباط.">PRODUCT. PROCESS. CONNECTION.</p>
-        <p class="person-name" dir="ltr">MohammadReza Sama</p>
+        <p class="person-name" dir="ltr"><strong>MohammadReza Samavatian</strong> <span class="name-alias">(Sama)</span></p>
         <h1 id="headline"><span data-en="Everything you need." data-fa="همه مسیرها،">Everything you need.</span><em data-en="One connection." data-fa="در یک نقطه.">One connection.</em></h1>
         <p class="role" dir="ltr">Product Manager</p>
         <p class="process" dir="ltr">BUSINESS × PROCESS × OPERATIONS</p>
-        <p class="intro" data-en="Explore my product work or choose the best way to connect. Two clear paths, one personal home." data-fa="با پروژه‌ها و تجربه‌های حرفه‌ای من آشنا شو، یا راه ارتباطی دلخواهت را انتخاب کن؛ دو مسیر روشن از یک نقطه شروع.">Explore my product work or choose the best way to connect. Two clear paths, one personal home.</p>
       </div>
       <figure class="photo-wrap">
         <img class="photo" src="portrait.jpg" alt="MohammadReza Sama" width="350" height="435" fetchpriority="high">
-        <figcaption class="photo-caption"><span>MOHAMMADREZA SAMA</span><em>01 / MRS</em></figcaption>
       </figure>
     </section>
     <section class="guide" aria-labelledby="choose-title">
@@ -196,10 +198,7 @@ html[dir="rtl"] .choice-title{text-align:start}
       </div>
     </section>
   </main>
-  <footer class="site-footer">
-    <span dir="ltr">© 2026 MOHAMMADREZA SAMA</span>
-    <span data-en="Product × Process × Operations" data-fa="محصول × فرآیند × عملیات">Product × Process × Operations</span>
-  </footer>
+  <div class="site-footer" aria-hidden="true"></div>
 </div>
 <script>
 (function(){
