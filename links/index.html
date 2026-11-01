@@ -404,6 +404,10 @@
       .portfolio-bridge-action{min-height:46px;padding:12px 19px;font-size:11px;gap:12px}
     }
     @media(prefers-reduced-motion:reduce){.portfolio-bridge-action{animation:none}}
+
+    /* Four destinations, without the introductory hero or extra calls to action. */
+    .frame{max-width:1100px}.topline{min-height:84px}.mark img{width:66px;height:36px;opacity:.94}.directory{padding-top:52px}.category-grid{margin-top:0}.links-area:empty{display:none}.category-back{border:1px solid var(--line-strong);background:transparent;color:var(--gold);font:600 12px "Manrope",sans-serif;padding:11px 15px;cursor:pointer;margin-bottom:24px;min-height:44px}.category-back:hover{background:rgba(211,180,120,.08)}.back-link{min-height:36px;display:inline-flex;align-items:center}.category-card:focus-visible,.category-back:focus-visible,.back-link:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
+    @media(max-width:600px){.directory{padding-top:28px}.mark img{width:57px;height:32px}.topline{min-height:72px}}
   </style>
 </head>
 <body>
@@ -412,12 +416,11 @@
   <div class="frame">
     <header class="topline">
       <div class="mark" aria-label="MRS identity">
-        <img src="../monogram.svg" alt="MRS" width="90" height="43">
-        <span class="divider" aria-hidden="true"></span>
-        <span class="descriptor">PRODUCT / PROCESS<br>OPERATIONS</span>
+        <img src="../monogram.svg?v=20261101" alt="MRS" width="90" height="43">
+
       </div>
       <div class="top-actions">
-        <a class="back-link" href="../" data-en="← Home" data-fa="← صفحه اصلی">← Home</a>
+        <a class="back-link" id="page-back" href="../" data-en="← Back" data-fa="← بازگشت">← Back</a>
         <div class="controls">
           <button class="control" id="language" type="button" aria-label="Switch language">FA</button>
           <button class="control" id="theme" type="button" aria-label="Switch appearance">
@@ -428,51 +431,14 @@
     </header>
 
     <main id="main">
-      <section class="hero" aria-labelledby="headline">
-        <div class="hero-copy">
-          <p class="eyebrow" data-en="THE PERSONAL CONNECTION HUB" data-fa="درگاه ارتباطی شخصی">THE PERSONAL CONNECTION HUB</p>
-          <p class="hero-name" dir="ltr">MohammadReza Sama</p>
-          <h1 id="headline">
-            <span data-en="Everything you need." data-fa="همه مسیرها،">Everything you need.</span>
-            <em data-en="One connection." data-fa="در یک نقطه.">One connection.</em>
-          </h1>
-          <p class="role" dir="ltr">Product Manager</p>
-          <p class="signature" dir="ltr">BUSINESS × PROCESS × OPERATIONS</p>
-          <p class="intro" data-en="My work, ideas, and ways to connect—organized so you can go straight to what matters." data-fa="کارها، ایده‌ها و راه‌های ارتباطی من؛ مرتب و دسته‌بندی‌شده تا مستقیم به چیزی برسی که دنبالش هستی.">My work, ideas, and ways to connect—organized so you can go straight to what matters.</p>
-        </div>
-        <figure class="hero-picture">
-          <div class="portrait-frame"><img class="portrait" src="../portrait.jpg" alt="MohammadReza Sama" width="248" height="305"></div>
-          <figcaption class="hero-caption"><span>MOHAMMADREZA SAMA</span><span>01 / MRS</span></figcaption>
-        </figure>
-      </section>
-
-      <div class="portfolio-bridge">
-        <a class="portfolio-bridge-action" href="../portfolio/">
-          <span data-en="Explore my full portfolio" data-fa="مشاهده پورتفولیوی کامل">Explore my full portfolio</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg>
-        </a>
-      </div>
-
-      <section class="directory" aria-labelledby="directory-title">
-        <div class="directory-top">
-          <div>
-            <p class="directory-kicker" data-en="01 / THE DIRECTORY" data-fa="۰۱ / فهرست ارتباطات">01 / THE DIRECTORY</p>
-            <h2 id="directory-title" class="directory-title"><span data-en="Choose your" data-fa="مسیر دلخواهت را">Choose your</span> <em data-en="destination." data-fa="انتخاب کن.">destination.</em></h2>
-          </div>
-          <p class="directory-help" data-en="Pick a category. Only the links you need will appear below." data-fa="یکی از دسته‌ها را انتخاب کن؛ فقط لینک‌های همان بخش پایین نمایش داده می‌شوند.">Pick a category. Only the links you need will appear below.</p>
-        </div>
+      <section class="directory" aria-label="Contact directory">
         <nav id="category-nav" class="category-grid" aria-label="Link categories"></nav>
         <div class="links-area" id="link-groups" aria-live="polite"></div>
       </section>
 
-      <p class="note" data-en="Some social links may require signing in. WhatsApp username access is still to be verified." data-fa="بعضی شبکه‌ها ممکن است نیاز به ورود داشته باشند. فعال‌بودن لینک نام کاربری واتساپ هنوز نیازمند تأیید است.">Some social links may require signing in. WhatsApp username access is still to be verified.</p>
     </main>
 
-    <footer>
-      <span dir="ltr">© 2026 MOHAMMADREZA SAMA</span>
-      <span data-en="Product × Process × Operations" data-fa="محصول × فرآیند × عملیات">Product × Process × Operations</span>
-      <a href="../" data-en="Back to home ↗" data-fa="بازگشت به خانه ↗">Back to home ↗</a>
-    </footer>
+
   </div>
 </div>
 
@@ -637,7 +603,7 @@
     try { localStorage.setItem(key, value); } catch (_) {}
   }
 
-  let language = readPreference("mrs-links-language", "en") === "fa" ? "fa" : "en";
+  let language = "en";
   let theme = readPreference("mrs-links-theme", "dark") === "light" ? "light" : "dark";
 
   function showToast(message) {
@@ -794,19 +760,7 @@
       navNode.append(card);
     });
 
-    if (activeCategory === null) {
-      const hint = document.createElement("div");
-      hint.className = "selection-placeholder";
-      const dot = document.createElement("i");
-      dot.setAttribute("aria-hidden", "true");
-      const message = document.createElement("span");
-      message.textContent = language === "fa"
-        ? "برای مشاهده لینک‌ها، یکی از چهار دسته بالا را لمس کن."
-        : "Select one of the four categories above to reveal its links.";
-      hint.append(dot, message);
-      groupsNode.append(hint);
-      return;
-    }
+    if (activeCategory === null) return;
 
     const selected = groups[activeCategory];
     const details = categoryDetails[activeCategory];
@@ -832,7 +786,17 @@
     const stack = document.createElement("div");
     stack.className = "stack";
     selected.links.forEach(function (item) { stack.append(makeLink(item)); });
-    panel.append(head, stack);
+    const back = document.createElement("button");
+    back.type = "button";
+    back.className = "category-back";
+    back.textContent = language === "fa" ? "← بازگشت به چهار دسته" : "← Back to categories";
+    back.addEventListener("click", function () {
+      activeCategory = null;
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      renderDirectory();
+      navNode.querySelector("button").focus();
+    });
+    panel.append(back, head, stack);
     groupsNode.append(panel);
   }
 
@@ -872,8 +836,17 @@
     savePreference("mrs-links-theme", theme);
     render();
   });
+  document.getElementById("page-back").addEventListener("click", function(event) {
+    try {
+      const previous = new URL(document.referrer);
+      if (previous.origin === window.location.origin && previous.pathname !== window.location.pathname) {
+        event.preventDefault(); window.history.back();
+      }
+    } catch (_) {}
+  });
   render();
 }());
 </script>
 </body>
 </html>
+
