@@ -1,0 +1,56 @@
+name: Generate updated English & Persian resumes
+on:
+  push:
+    paths:
+      - '.github/workflows/build-resumes.yml'
+      - '.resume-source/**'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare fonts and PDF renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-core fonts-liberation poppler-utils >/dev/null
+          python -m pip install --quiet weasyprint==68.0
+      - name: Render both searchable PDF resumes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from weasyprint import HTML
+          for lang in ('en','fa'):
+              source=Path('.resume-source') / f'{lang}.html'
+              output=Path(f'resume-{lang}.pdf')
+              HTML(filename=str(source),base_url=str(source.parent.resolve())).write_pdf(str(output))
+              print(f'{lang}: {output.stat().st_size} bytes')
+          PY
+      - name: Verify content and page lengths
+        run: |
+          for lang in en fa; do
+            echo "=== resume-$lang ==="
+            pdfinfo "resume-$lang.pdf" | grep -E "Pages:|Page size:|File size:"
+            pdftotext "resume-$lang.pdf" - | grep -i "TopTech" | head -2
+          done
+          pdftotext resume-en.pdf - | grep -i "Product Intelligence"
+          pdftotext resume-en.pdf - | grep -i "Python"
+          pdftotext resume-fa.pdf - | grep -E 'پایتون|اتوماسیون' | head -3
+      - name: Preview every rendered PDF page
+        run: |
+          mkdir -p .resume-preview
+          for lang in en fa; do
+            pages=$(pdfinfo "resume-$lang.pdf" | awk '/^Pages:/ {print $2}')
+            for page in $(seq 1 "$pages"); do
+              pdftoppm -f "$page" -l "$page" -scale-to 1150 -jpeg -jpegopt quality=84 -singlefile "resume-$lang.pdf" ".resume-preview/new-$lang-page$page"
+            done
+          done
+      - name: Publish verified updated PDFs on GitHub Pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add resume-en.pdf resume-fa.pdf .resume-preview/new-*.jpg
+          git diff --cached --stat
+          git commit -m "Update full bilingual resumes with TopTech PM experience and technical toolkit"
+          git push
