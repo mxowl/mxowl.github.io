@@ -15,7 +15,7 @@
 
 ## 01 / The portfolio
 
-I’m **MohammadReza Sama**, a Product Manager working concurrently with **MVM (Modiran Khodro)** and **TopTech**, with a background in customer experience and operations at **SnappMarket**.
+I’m **MohammadReza Sama**, a Product Manager with experience at **TopTech (Modiran Khodro)** and **TalaLand**, building on a foundation in customer experience and operations at **SnappMarket**.
 
 This portfolio brings together the customer journeys, operating models, and product decisions I’ve helped shape across **BNPL, CRM, marketplaces, analytics, and product delivery**.
 
@@ -23,7 +23,8 @@ This portfolio brings together the customer journeys, operating models, and prod
 
 ### Selected work
 
-- **Product Intelligence & Automation** — monitoring, structured reporting, workflow design, and product follow-up.
+- **QA/QC AI Bot — Contact Center Intelligence** — TalaLand knowledge tree, Dockerized local quality reviews, performance dashboards, coaching and role-aware reporting; full-service automation remains a future vision.
+- **Product Intelligence & Automation** — TopTech (Modiran Khodro) read-only monitoring, structured reporting, workflow design, and human-reviewed AI analysis roadmap.
 
 - **BNPL & installment gold purchase** — customer journeys from eligibility to repayment.
 - **CRM action plan & knowledge tree** — decision paths, ownership, and follow-through.
