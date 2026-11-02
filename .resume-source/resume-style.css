@@ -46,7 +46,7 @@ table{border-collapse:collapse;width:100%;font-size:8.25pt;line-height:1.24}
 .sheet .section:first-of-type{margin-top:10px}
 footer{display:none}
 .lang-fa{font-family:"Noto Sans Arabic",Tahoma,sans-serif;font-size:8.45pt;line-height:1.64;direction:rtl}
-.lang-fa .first-header{flex-direction:row-reverse}
+.lang-fa .first-header{flex-direction:row}
 .lang-fa .first-header h1{font-family:"Noto Sans Arabic",sans-serif;font-size:18pt;letter-spacing:0}
 .lang-fa .tagline{font-size:9.6pt}
 .lang-fa .contact{font-size:7.9pt;direction:ltr;text-align:right;font-family:"Liberation Serif",Georgia,serif}
