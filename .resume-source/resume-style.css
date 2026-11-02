@@ -3,7 +3,7 @@
   size:A4;
   margin:15mm 14mm 18mm 14mm;
   @bottom-left { content:"MohammadReza Sama  |  November 2026"; color:#8a8d91; font-size:7.5pt; font-family:"Liberation Serif",Georgia,serif; }
-  @bottom-right { content:counter(page) " / " counter(pages); color:#8a8d91; font-size:7.5pt; font-family:"Liberation Serif",Georgia,serif; }
+  @bottom-right { content:counter(page) " / " counter(pages); color:#8a8d91; font-size:7.5pt; font-family:"Liberation Serif",Georgia,serif; direction:ltr; unicode-bidi:bidi-override; }
 }
 :root{--navy:#213849;--gold:#947741;--line:#9caab4;--soft:#edf1f4;--soft2:#f6f8fa;--ink:#30343a;}
 *{box-sizing:border-box}
