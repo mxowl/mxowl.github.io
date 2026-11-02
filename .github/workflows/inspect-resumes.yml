@@ -1,0 +1,23 @@
+name: Inspect existing resumes
+on:
+  push:
+    paths:
+      - '.github/workflows/inspect-resumes.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract text and page layout
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y poppler-utils >/dev/null
+          for file in resume-en.pdf resume-fa.pdf; do
+            echo "+++++++++++ $file +++++++++++"
+            pdfinfo "$file" | grep -E 'Pages:|Page size:'
+            pdftotext -layout "$file" - | head -c 30000
+            echo
+            echo "=========== END $file =========="
+          done
