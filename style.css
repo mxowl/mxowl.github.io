@@ -38,3 +38,27 @@ html[lang=fa] .hero-foot.process-foot{font-size:12px}
 
 /* Center the project-story action in every project card, in both languages. */
 .project .project-details-button{display:flex;width:max-content;max-width:100%;margin-inline:auto;justify-content:center;text-align:center}
+
+
+/* Ninth featured project: concept-led AI quality control visual — unique waveform, score ring and coaching stream. */
+.project-qaqc .project-visual,.project-visual.banner-0{background:radial-gradient(ellipse at 24% 72%,#193d43 0%,#172d36 48%,#0f2130 100%);border-color:#a4d3bb55}
+.project-qaqc .visual-label{color:#add1bd}
+.project-qaqc .concept-scene{stroke:#9fcab6}
+.project-qaqc .concept-scene text{fill:#e6e8cc}
+.project-qaqc .concept-scene .qc-wave{filter:drop-shadow(0 0 8px #91d3ba46)}
+.project-qaqc .concept-scene .qc-bar{stroke-width:3;stroke-linecap:round;animation:qc-wave 2.2s ease-in-out infinite;animation-delay:var(--phase);transform-origin:center 120px}
+.project-qaqc .concept-scene .qc-ring{fill:transparent;stroke:#a7cdb938;stroke-width:9}
+.project-qaqc .concept-scene .qc-progress{fill:none;stroke:#d2e0b4;stroke-width:9;stroke-dasharray:254 352;stroke-linecap:round;animation:qc-score 4s ease-in-out infinite}
+.project-qaqc .concept-scene .qc-report{animation:qc-report 4s ease-in-out infinite}
+.project-visual.banner-1{background:radial-gradient(ellipse at 50% 50%,#224754,#142732)}
+.project-visual.banner-2{background:linear-gradient(135deg,#253a43,#182b36)}
+.project-visual.banner-3{background:linear-gradient(135deg,#2c3b33,#1b302e)}
+.project-visual.banner-4{background:linear-gradient(135deg,#323140,#212c39)}
+.project-visual.banner-5{background:linear-gradient(135deg,#1b3c48,#172b38)}
+.project-visual.banner-6{background:linear-gradient(135deg,#34372d,#202f33)}
+.project-visual.banner-7{background:radial-gradient(ellipse,#343748,#202b38)}
+.project-visual.banner-8{background:linear-gradient(135deg,#243936,#192c36)}
+@keyframes qc-wave{0%,100%{transform:scaleY(.45);opacity:.53}50%{transform:scaleY(1.4);opacity:1}}
+@keyframes qc-score{0%,100%{stroke-dasharray:215 352;opacity:.85}50%{stroke-dasharray:275 352;opacity:1}}
+@keyframes qc-report{0%,100%{opacity:.48;transform:translateX(-4px)}50%{opacity:1;transform:translateX(2px)}}
+@media(prefers-reduced-motion:reduce){.project-qaqc .concept-scene .qc-bar,.project-qaqc .concept-scene .qc-progress,.project-qaqc .concept-scene .qc-report{animation:none!important}}
