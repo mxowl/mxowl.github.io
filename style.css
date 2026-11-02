@@ -69,3 +69,9 @@ html[lang=fa] .hero-foot.process-foot{font-size:12px}
 .company-list strong{min-width:0;overflow-wrap:break-word}
 @media(max-width:1300px){.company-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.company-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}.company-list strong:last-child{grid-column:1/-1;justify-self:center;text-align:center;padding-block:5px}}
+
+/* Stacked bilingual résumé links in the career timeline heading */
+.experience-resume-links{display:flex;flex-direction:column;align-items:flex-start;gap:8px;flex-shrink:0}
+.experience-resume-links .text-link{display:inline-flex;align-items:center;min-height:32px;white-space:nowrap}
+html[dir="rtl"] .experience-resume-links{align-items:flex-start}
+@media(max-width:760px){.experience-resume-links{align-items:flex-start;margin-top:18px;gap:7px}}
