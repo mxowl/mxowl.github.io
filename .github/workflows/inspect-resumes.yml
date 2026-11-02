@@ -3,21 +3,26 @@ on:
   push:
     paths:
       - '.github/workflows/inspect-resumes.yml'
-  workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   inspect:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Extract text and page layout
+      - name: Render original resume previews
         run: |
           sudo apt-get update -qq && sudo apt-get install -y poppler-utils >/dev/null
-          for file in resume-en.pdf resume-fa.pdf; do
-            echo "+++++++++++ $file +++++++++++"
-            pdfinfo "$file" | grep -E 'Pages:|Page size:'
-            pdftotext -layout "$file" - | head -c 30000
-            echo
-            echo "=========== END $file =========="
+          mkdir -p .resume-preview
+          for lang in en fa; do
+            for page in 1 2 4; do
+              pdftoppm -f "$page" -l "$page" -scale-to 1150 -jpeg -jpegopt quality=85 -singlefile "resume-$lang.pdf" ".resume-preview/$lang-page$page"
+            done
           done
+      - name: Keep temporary visuals for layout inspection
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .resume-preview
+          git commit -m "Temporary preview images for faithful résumé layout update"
+          git push
