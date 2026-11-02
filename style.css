@@ -62,3 +62,10 @@ html[lang=fa] .hero-foot.process-foot{font-size:12px}
 @keyframes qc-score{0%,100%{stroke-dasharray:215 352;opacity:.85}50%{stroke-dasharray:275 352;opacity:1}}
 @keyframes qc-report{0%,100%{opacity:.48;transform:translateX(-4px)}50%{opacity:1;transform:translateX(2px)}}
 @media(prefers-reduced-motion:reduce){.project-qaqc .concept-scene .qc-bar,.project-qaqc .concept-scene .qc-progress,.project-qaqc .concept-scene .qc-report{animation:none!important}}
+
+
+/* Five-company experience strip: keep Canbo readable across devices. */
+.company-list{grid-template-columns:repeat(5,minmax(0,1fr));column-gap:clamp(12px,1.6vw,24px);row-gap:24px;min-width:0}
+.company-list strong{min-width:0;overflow-wrap:break-word}
+@media(max-width:1300px){.company-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.company-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}.company-list strong:last-child{grid-column:1/-1;justify-self:center;text-align:center;padding-block:5px}}
