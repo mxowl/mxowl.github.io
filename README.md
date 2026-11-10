@@ -40,9 +40,9 @@ Project descriptions reflect professional experience. Illustrations are conceptu
 
 | Feature | Implementation |
 | :--- | :--- |
-| **Two languages** | English and Persian, with right-to-left layout support |
+| **Two languages** | English and Persian, with Persian-first defaults and right-to-left layout support |
 | **Two themes** | Dark navy and warm light, with a muted gold accent |
-| **Selected work** | Filterable projects and expanded project spotlights |
+| **Selected work** | Filterable projects, decision stories, suggested impact measures and expanded project spotlights |
 | **Career & learning** | Experience timeline, education, and professional courses |
 | **Direct access** | English/Persian PDF résumés and contact links |
 | **Thoughtful details** | Reading progress, keyboard focus states, and reduced-motion styles |
@@ -55,6 +55,7 @@ A lightweight static website built with **HTML, CSS, and JavaScript**, published
 | :--- | :--- |
 | [index.html](index.html) | Page structure, metadata, navigation, and bilingual text |
 | [style.css](style.css) | Visual identity, responsive layouts, themes, and motion |
+| [refresh-2026.css](refresh-2026.css) | Editorial refresh, improved portrait framing, new case sections and mobile refinements |
 | [app.js](app.js) | Project data, language/theme controls, filters, and interactions |
 | [portrait.jpg](portrait.jpg) | Portfolio portrait |
 | [favicon.svg](favicon.svg) | Personal monogram |
