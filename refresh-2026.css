@@ -167,3 +167,10 @@ html[data-theme="light"] .portfolio-page .focus-card{background:rgba(255,255,255
 html[lang="fa"] .links-page .link-intro h1{font-family:"Vazirmatn",Tahoma,sans-serif;letter-spacing:0}
 html[lang="fa"] .links-page .link-intro>p{letter-spacing:0}
 @media(max-width:600px){.links-page .link-intro{margin:25px auto 24px}.links-page .link-intro>span{font-size:11px}.links-page .link-intro h1{font-size:26px}.links-page .link-intro-cta{font-size:11px}}
+
+/* Keep the expanded chapter index usable on laptop-height viewports */
+.portfolio-page .sidebar{overflow:hidden}
+.portfolio-page .sidebar .side-links{flex:1;min-height:0;overflow-y:auto;scrollbar-width:thin;padding-inline-end:5px}
+.portfolio-page .sidebar .side-links a{padding-block:10px}
+.portfolio-page .sidebar .reading{margin-top:12px;padding-top:12px}
+@media(max-height:700px) and (min-width:761px){.portfolio-page .sidebar{padding-block:19px}.portfolio-page .sidebar>.brand{margin-bottom:12px}.portfolio-page .sidebar-caption{padding-bottom:12px}.portfolio-page .sidebar .side-links{margin-top:12px}.portfolio-page .sidebar .side-links a{padding-block:7px}}
